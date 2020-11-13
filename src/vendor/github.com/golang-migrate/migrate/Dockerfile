@@ -1,9 +1,10 @@
 FROM golang:1.10-alpine3.7 AS downloader
 ARG VERSION
 
-RUN apk add --no-cache git gcc musl-dev curl
+RUN apk add --no-cache git gcc musl-dev curl dpkg
 
-RUN curl -fsSL -o /usr/local/bin/dep https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 && chmod +x /usr/local/bin/dep
+RUN dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')";\
+    curl -fsSL -o /usr/local/bin/dep https://github.com/golang/dep/releases/download/v0.5.4/dep-linux-${dpkgArch} && chmod +x /usr/local/bin/dep
 
 WORKDIR /go/src/github.com/golang-migrate/migrate
 
