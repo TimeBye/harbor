@@ -1,3 +1,22 @@
+# For ARM
+
+```
+# 安装  docker-compose
+python3 -m pip install -IU docker-compose
+
+# 编译指令
+make package_offline -e \
+DEVFLAG=false \
+BUILDBIN=true \
+VERSIONTAG=v1.9.4 \
+PKGVERSIONTAG=v1.9.4 \
+UIVERSIONTAG=v1.9.4 \
+NOTARYFLAG=true \
+CLAIRFLAG=true \
+MIGRATORFLAG=true \
+CHARTFLAG=true
+```
+
 # Harbor
 
 [![Build Status](https://travis-ci.org/goharbor/harbor.svg?branch=master)](https://travis-ci.org/goharbor/harbor)
